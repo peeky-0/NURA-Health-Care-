@@ -76,17 +76,13 @@
     .hero-lockup .lockup-eyebrow{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .3s both;}
     .hero-lockup .hero-ctas{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .4s both;}
 
-    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-    .mock-device{animation:float 6s ease-in-out infinite;}
-
-    nav{transition:box-shadow .3s ease,background .3s ease;}
-    nav.scrolled{box-shadow:0 1px 0 rgba(20,33,61,.06),0 8px 24px -16px rgba(20,33,61,.15);}
+    nav{transition:box-shadow .3s ease;}
+    nav.scrolled{box-shadow:0 1px 0 rgba(20,33,61,.06);}
   }
 
   .btn{transition:.15s, transform .15s ease;}
   .btn:hover{transform:translateY(-1px);}
   .btn:active{transform:translateY(0);}
-  .btn-primary:hover{box-shadow:0 8px 20px -8px rgba(20,33,61,.4);}
   .trust-pill{transition:transform .2s ease,border-color .2s ease;}
   .trust-pill:hover{transform:translateY(-2px);border-color:var(--border-strong);}
   .principle-item{transition:transform .2s ease;}
@@ -108,7 +104,7 @@
 
 
   /* NAV */
-  nav{position:sticky;top:0;background:rgba(250,250,248,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10;}
+  nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:10;}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
   .logo{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:18px;letter-spacing:-.01em;color:var(--navy);line-height:1;flex-shrink:0;}
   .nav-word{font-family:'Satoshi',sans-serif;font-weight:600;font-size:16px;letter-spacing:.09em;color:var(--ink);}
@@ -117,9 +113,6 @@
   .nav-links a{position:relative;padding-bottom:2px;}
   .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--navy);transition:width .25s ease;}
   .nav-links a:hover::after{width:100%;}
-  .scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--navy);width:0%;z-index:20;transition:width .1s linear;}
-  .logo svg{transition:transform .5s cubic-bezier(.16,1,.3,1);}
-  .logo:hover svg{transform:rotate(180deg);}
   .nav-links a:hover{color:var(--navy);}
   @media(max-width:760px){.nav-links{display:none;} .nav-word{display:none;}}
 
@@ -132,7 +125,7 @@
   .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
 
   /* Product mockup (hero visual) */
-  .mock-device{background:var(--dark-panel);border-radius:22px;padding:12px;box-shadow:0 40px 80px -30px rgba(20,33,61,.35);}
+  .mock-device{background:var(--dark-panel);border-radius:22px;padding:12px;border:1px solid var(--border-strong);}
   .mock-screen{background:var(--dark-bg);border-radius:14px;padding:26px 24px;color:#F1F3F7;min-height:400px;}
   .mock-topbar{display:flex;justify-content:space-between;font-size:12px;color:#5E6A85;font-family:'Satoshi',sans-serif;margin-bottom:22px;}
   .mock-eyebrow{font-family:'Satoshi',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5E6A85;}
@@ -216,7 +209,6 @@
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
 <nav>
   <div class="nav-inner">
     <div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADiCAYAAABX5cvqAAARYklEQVR4nO2decxlRZnGf9eFxQYEARElTovCQAIKiETBYOsILnFhBBXXERVEBRdAxSUSHWcaFxYVMI2yOKjMOK3g4EQQGcS4JWKjjYqIiEYUm6ZBEUi3Cp9/1L3z3f64935nqarnrXPeX3Lz5Uvuqfe5deqpt+qcOnUGD3noDjiOo+EBagGO02fcgI4jxA3oOELcgI4jxA3oOELcgI4jxA3oOELcgI4jxA3oOELcgDbZETgJuA2Yi/C5DVgBPDHnj3AWZ+BL0UzweuDdwM6Z4t0HHAd8PFM8ZwpuQA2XAM9Ti1jACcApahF9ww2Yh0OAi9QiarAKH65mweeAabmQMAcryXwA+xB0X6kW0nXcgPE5nvmLH4eLtbRlGfO/ZVOtlG7yILWADjGnFpCY9cO/ZwDHKoV0CZ8DtucuYIlahIDdgOvVIkrHh6DNuZiQ9fpoPoCfA9epRZSOG7A+JxGM90K1EAPsRqiLc9RCSsWHoNXZHLhHLcI4A7WA0vAMWI3X4uarQtcvREXHDbg4PsSqxxzwEbWIUnADTufleI/elHfgdVcJN+BkTgE+rxbRAdyEi+A34u+PN5q4zOEXZ6biGXBj3HxpmAO2U4uwiBtwHjdfWtaS73nHYnADBtx8ebgRb3Mb4ZXh5svNvcAeahFW6LsB3XwargW2VYuwQJ8N6ObTcptagAX6asAfqAU4gHeCvTTgS4B91SKc/6fXJuyjAf9LLaAiXwWeTbiJ3fRzLLAht/AG9NaEfTOg9Se4lzNvnucDl7Us7wxgs2F5L2pZVmp6acK+PQ9o7SRfATxTEPcg4OuCuFXo1bK1PmVAK+Y7nvkspzAfwOVjGm4SaZiGlfOUhb4Y0MIms6cQGvypaiEL2Bl7Wac3JuzLEFR9Qq018GnsD3xHLWKMUuqtMX3JgCpGw7xS+C5B73lqIUPUHWdy+mDA5YKYl1GW8RbyWuCRahFDOm3CPgxBc5/Ak4APZo6ZEisGKLlDm4o/ER+XJXRv97QBsAZ4uFhHJ5+s7/oQ9ICMsQZ0z3wjdgBOU4sArlYLiE3Xh6B/ArbKEKdzPfMU/hd4rljDDcCuYg3R6LoBc8xfdgF+mSGOFX4DPFqsYY6OjN468SNm0GYh87TPK4Hbh+XvQ7/MB/AP6FfPDIBLxRqi0PUM6KTDwtXRs4E3qEW0oesZ0EmHhXnvUcBZahFtcAM6bbBgwjcOP0XiBnTaYsGEZwGHqEU0wQ3oxMCCCS8C3q4WURc3oBMLCyY8lcKWAfpVUCc2Fq6OPgFYrRZRBc+ATmwsZMIfU8jLYNyATgosmHAtBZjQDeikwooJ91SLmIUb0EmJBROuBl6sFjENN6CTGgsm/CKwQi1iEn0w4C7Ah4DrCFfopn3uAb4GvEaistsMCE9RKDkKOEes4X508TbEu4BjgJ0ilLUGeC8GT1yhXAUcKNbwHjT7BE2kCwZcDpyYMd52wLqM8bpGroekZ3EacJxYA1CmAbcAVhGGlmq2Zf7ZQKc6Fm7Wfxk4VC2ipDng6wkn7s/YMB+ETDhHh7ZIyISFCzMvAj6qFlGCAc8kNPJPq4XM4HqCRtP3nIxhwYQnAJ9RCrA8BLUwTGnKEcD5ahGFYOE8X4To9W0WM+AnsHFS2nAe5f+GXFjIhP8MfFgR2JoB5whvde0Kc8CRahEFYMGE70Rwu8nKELQP2cJCI7OOhXZwLfD4XMHUGfDl2Kj0HMwBz1OLMI6FTmpP2r8avDJKA34W+LwwvoJLMLQKwygWTHgwYQVUclRD0L5kvVlYaGiWsdBGXg1ckDKAwoAWKtYKbsLZWGgrOwC3pio89xDUQoVawutjNhY6qDUpC89pQG9sk/F6mY0FEyY7RzkMuBPeyBbD62c2nTVhDgP+NkOMLiBfGGwcCyaMvvFv6osw3rPX4zHAr9UijKNuU1E7gpQZUF1RJaJ+714JqDNh1HadyoD/mqjcPuAd1+KoTfj8WAWlGoJ6I2rHNYS37zqzUbazKJ1Aigzo5mvP3viStSooM+H3YhQSOwN+EcOboBaIeqhVCqpOv/X5iZ0BrZnvq8AjCBVV5bMrcKlE6WR8NFGNAZq6ah0zpgHvjFhWG/5KMNKAMFmus5ToBuA5w2NfFl9aI/w+ajVUT/Zs0ebgWKIPA7aMVFZTjiQYZxOCkdryn8xnRiU7kfH5tMJRnKs/tzk41hyw+KtRFdgE2JAp1iTUHUFJ5G6PewI/aXJgjAx4TIQymvAf5G2UfxnG+33GmOP4fLA6uTura5seGCMDKhrGHsBPBXFHfAnNNnbrgc0FcUslZ9tsZPq2GfBDLY9vwgCt+SBsaa4YEm5GeErbqcaTMsZqZPa2GTBnD/NL7GxJP45iBODzwepcCSzLFKv2eWmTAXNvFW/RfKAxg88Hq/P0jLHeXPeANhnQ/Pg6M54JbZPr/NQ6J00zYIyXX1allEa2VBDTxDvuCuHoTHGW1vly0wy4Hti0yYE1WYr+1cZ1OJv8W9E/GPhb5pilkiML/prwYHUlmhowxw+5EnhGhjix8aGoXXYBfpEhTuXz0WQI+sQGxzShRPOBxgyXCGKWyA3A79QixmliwMujq7g/OeeYKchtQn/nRHVytK2nVf1iEwNu0+CYupjqpRpybuZ4fmvCDiuqfrHJHDD1iX4ccGPiGLnIbYr7gAdmjlkqqc9NpVFQ3Qz4Pw2E1KUr5oP8Q9EHAB/JHNNpQV0DRtsNagrZ31CagdwmfAewY+aYJZJ7JddE6g5BTaTtAjkNeFvmmF2ty5ikbM/7AT9Y7Et1MuABzbVU4ueJy1cSfUvzCvhFGS0vqPKlOgbcv6GQquyeuHw1ioy0ShCzJL6csOxK97HrGPARDYU48+yXOd7ewEszxyyJf09Y9h5VvlRnDvg74JGN5VTQkrBsS5wLHJE5Zl/qtgkph+qL1nsdA6YU+ivgsQnLt4avF7WD1ICqvRQXcpFaQGb8IV4HsGPAf1MLEPBJQcwPCmI6M7AyBO3r8MiHonp8CNpjfCiqJ8fzgVNxA+rZTRCzS+tt2/JHZXA3oJ7ryf9Gpp3x+4MjblcG9zmgHXw+qOFq0u3y4HPAgvD5oIZcW6xMxA1oi30FMd2EQtyAtvghYVVQbipvoeDExeeANlFkpS2BuwRx1fh9QOBAtQBjbCaI2epNr4WiuAW0EVYMeIJagDE2ACcL4vZtPnhUwrKvq/IlK0NQ8GHoJBSGuIlwn7APpKzfj1NhGxIrGdCZjKJTegzwTEHcrlHpafs6BuzjBN0CDxfEzLH7uZpDE5f/rSpfqmPArzQUUpXjE5dfKmuBVwnidn0+uFItAOrNAXcHfpZQC/g8cBa3kH9fnrVoMnAOTFzTqJMBK13VaUnKPWdKR7HZ7vaEjZ26xhWJy/9M1S/W3Zj3N8Cja8upzh/J8/KXkvFF2+1JXYcPBe6s8sW6V0FTv+Z368Tld4FjBDG7NB+8MEOMSuYDm29Huhw4OHGM0lEY4nQ0O3zHJkfdJX1DbmoOUgsoAMWQ8G2UPz3IYb7T63y5iQHXNDimLv+dIUbp7CWIKX16vCUfyBSn1iihyRB0e+DWugc1oGsT/xSsJP0N5UmUeG5yDdtr1U2TDLi2wTFN6NLEPxWHieJWevOPIXK1pa3qHmBxDjjO69QCCkCRjVKviopJzo689iNdTQ34iobH1aXyDc2eo9hlu4QRSk6NjdbPNpkDjsj540qcc+RGZQir5yZ3fTSqhzZD0KtaHFuXHBd9SkdlBItPyeQ23x1ND2xjwGUtjq3L9hhZvW4chQmXYGc4ujsaLQ9remDbizB/aXl8HQ5FvIdjIagy4RyaWyLj8VM/rTOJH7U5uK0BN215fF2uzhyvVE4TxV0JfD1zzGejzcCtnhaxfhtiElaGO5Y5Thj7IMI5+pfEcXYbxvla4jizqLTtxCzaXAUd8TBgXdtCGmD16pslrHRWS4B7IpTzKODmCOXEonUbjJEBVesDrTQuy1jppO4mnK9vAgfUPPZZwOrh8ZbMt3uMQmJkQIBtgdtiFNQAK43MKq8ELlCLWIS7CRf0tqaM83k7oc23JtYccB3w7Uhl1WUOzaZFpfA54MdqEYuwhPCoUwnmg0jmg3gZcIRyWHg8cKowvnV8yB6HbYj4Vt3YV0GXRS6vDqcAHxPGt04p2cUyFxP5ldaxMyDY6Gm9sU1mL+AatYiCid6uUtwHtND4LXQCFvkRcL5YQ6kkadepbsRb2MzVTTiZI4BVahGFkSyppDLgWuA7icqug5twMr6mtjpJR3Qp5oDjWDGAhWGxRaycH6skbzep14Jaafje0CZj5fxYJEvd5FiMbeUkuwknY+X8WCJbneR6GsLKSXYTTsbK+bFA1rrI+TiSlTcfuQkn03cTDhDUQU4D3gK8JWO8WbgJJzMAvqAWIUDW+eR+IPeT2FmZ7yaczCuAF6pFZOJexJk/9W2IaRyDZi/LSfR96DWLO+juK+NMnHfVlhRnEFZkWMAz4XS2IWz90CX2xYj5QLsnzPnA+4Xxx3ETTud6QoNVbDsSk0sJv+OHaiHjqIag4xyKnT0/zfSMhimts/oKcIhaxDQs7Ir2JeAlahFDVqsFFMDocv0KtZBF2Iqg8xCxjplYMCCEF3K+Sy0C2BPd1hqlcTShgav2IJ3EKuY7iNpvKlJgYQg6zjOAK9QigPXA5moRBbKG/I+i3YKdRR61sZIBR/wfsKtaBLAZNh6nKo0dmM9AA+BI4MaI5a8jLOYYj1Gs+cBeBhzxT8A31CII26w/Sy2iYzyFsJ38UmBLgmm3ArYgbE14M+HK6yrCBZRcb2SWYNWAAPtjJwv51VEnCdaGoON8l/BaMguUdundKQTLBoSw2/aD1SKGuAmd6Fg3IMDfgAeqRQxxEzpRKcGAAPdhZx7mJnSiUYoBR7gJnU5RmgEBNlELGOImdFpTogH/imdCpyOUaMARbkKneEo2ILgJncIp3YAQ1m1awE3o1KYLBtxA2DrBAn0z4dzwc6FaSKl0wYAQXpq4t1rEkJvVAjIx3tkcPvz/HJGWYrG8GLsJhxEe7lWzGniCWkRCcmZ6K/P8JHQlA45YiY21o48HrlSLSMBS8prPytaVyehaBhzHwnzsm8DT1SIicTj553qdzn7QvQw4joUh4DJsdARtOY/85rssczwJXc6AEJ60/pNaxJBrgH3UIhqg6kA6n/2g2xkQ4E7CvMUCexMas5WHjBdjOTrz/UwUNztdz4AjDgSuUosYYyXwYrWIGaiHzb3IftD9DDjiW8BT1SLGOIzQyO9QC1nA6Ma6kveI42elLwaEsMFT7j0rF2Nr5hv94SINn8KG8UYsVwvISZ8MCGGLu39Ui5jChQQTnJ4p3mXDeEdnileF3gw9R/TNgAC/wPZen29lPiNdAzwqUrlPGyt3Djg4UrmxeJ9agIK+XISZxF6EBl4qVxCWvK1j/j0I+wKvkilqzjeAg9QiFPTZgABLgLvUInrOOmA7tQgVfRyCjnM38Fi1iJ7TW/OBGxDgV/Rw8m+E3te7G3Ce3jeGzHh94wZciDeKPHg9D3ED3h9vHGnx+h3DDTgZbyRp8HpdgBtwOt5Y4vEHvD4n4gacjTea9twK7KgWYRU34OK4CZvzfsIrqJ0pPEgtoBAGwJuAM9VCCsI7rgr0fSlaXTYF1qtFGOdevGOvjA9B67EB79lncTFuvlp4ZTVjZEIrD7FawDumBngGbMcAOFctQsyJuPka43PAePQxG7rxWuJD0Hj0aVjqxouED0HjMxh+VqiFROZs5n+bEwk3YDqOJjRWS/uRNuF8wu94g1hHJ/E5YF5KGp56psuAZ8C8DMY+F4i1LORkNtbnZMANqOPVzDf2T4s0fHhMw7tFGnqNG9AGR7Fx9jmWsOVgTL4PPHlBnBMjx3Bq4nNAxxHiGdBxhLgBHUeIG9BxhLgBHUeIG9BxhLgBHUeIG9BxhLgBHUfI3wHOc3dCr8CEGAAAAABJRU5ErkJggg==" width="20" height="20" alt="" /><span class="nav-word">NURA</span></div>
@@ -375,12 +367,12 @@
       <div class="firewall-grid">
         <div>
           <div style="font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#96A1B8;margin-bottom:18px;">Claim validation</div>
-          <div class="firewall-check reveal-child"><span>Patient</span><span>✓</span></div>
-          <div class="firewall-check reveal-child"><span>Service</span><span>✓</span></div>
-          <div class="firewall-check reveal-child"><span>Date &amp; time</span><span>✓</span></div>
-          <div class="firewall-check reveal-child"><span>Required documentation</span><span>✓</span></div>
-          <div class="firewall-check reveal-child"><span>Confirmation</span><span>✓</span></div>
-          <div class="firewall-check reveal-child"><span>Applicable rules</span><span>✓</span></div>
+          <div class="firewall-check reveal-child"><span>Patient</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6FBF98" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="#6FBF98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="firewall-check reveal-child"><span>Service</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6FBF98" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="#6FBF98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="firewall-check reveal-child"><span>Date &amp; time</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6FBF98" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="#6FBF98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="firewall-check reveal-child"><span>Required documentation</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6FBF98" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="#6FBF98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="firewall-check reveal-child"><span>Confirmation</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6FBF98" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="#6FBF98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="firewall-check reveal-child"><span>Applicable rules</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6FBF98" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="#6FBF98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="pill-status"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3"/><path d="M5 8.2L7 10.2L11 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All checks passed</div>
         </div>
         <div>
@@ -479,12 +471,8 @@
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   const navEl = document.querySelector('nav');
-  const progressEl = document.getElementById('scrollProgress');
   window.addEventListener('scroll', () => {
     navEl.classList.toggle('scrolled', window.scrollY > 8);
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-    progressEl.style.width = pct + '%';
   }, { passive: true });
 </script>
 </body>
